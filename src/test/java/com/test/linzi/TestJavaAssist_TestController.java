@@ -16,17 +16,9 @@ import javassist.libs.F.T2;
 public class TestJavaAssist_TestController {
     public static void main(String[] args) throws Exception {
         ClassPool classPool = ClassPool.getDefault();
-
-
         byte [] classBytes = ClassReaderUtils.readClass("/Users/quyixiao/github/javassist-3.23.1-GA/target/test-classes/com/test/linzi/TestController.class");
-
-
-
-
         CtClass ctClass= classPool.makeClass(new ByteArrayInputStream(classBytes), false);
         ctClass.defrost();
-
-
 
         for (CtMethod method : ctClass.getDeclaredMethods()) {
             if (method.getName().contains("$")) {
@@ -220,7 +212,7 @@ public class TestJavaAssist_TestController {
                 !"I".equals(sig) && !"J".equals(sig) && !"S".equals(sig) && !"Z".equals(sig))
             localVarDescriptor = "Ljava/lang/Object;";
 
-        b.addInvokestatic("com.linzi.classloading.enhancers.LocalvariablesNamesEnhancer$LocalVariablesNamesTracer", "addVariable", "(Ljava/lang/String;" + localVarDescriptor + ")V");
+        b.addInvokestatic("javassist.libs.LocalvariablesNamesEnhancer$LocalVariablesNamesTracer", "addVariable", "(Ljava/lang/String;" + localVarDescriptor + ")V");
         return b;
     }
 
